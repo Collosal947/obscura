@@ -6,7 +6,7 @@ const signToken = (user) =>
   jwt.sign(
     { id: user.id, username: user.username, role: user.role },
     process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRE }
+    { expiresIn: process.env.JWT_EXPIRE || '30d' }
   );
 
 exports.register = async (req, res) => {
